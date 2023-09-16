@@ -1,0 +1,19 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+# what to do after startup
+# create new schema after startup and destroy it on stop
+            ddl-auto: create-drop
+#if jpa performs query, I want to see it
+        show-sql: true
+        database: postgresql
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        properties:
+          hibernate:
+              format_sql: true
+
