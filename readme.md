@@ -1,13 +1,23 @@
-# spring security
-my introduction to spring security
+# spring security starter
 
-## running the database
-use 
-`docker run --name some-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres`
+This code is a starter for REST API secured with JWT.
 
-to start the database before you start the application.
+## development environment
+1. in `application.yml`, make sure spring.datasource.url is `jdbc:postgresql://localhost:5432/postgres`
 
-(You have to have Docker installed on your OS)
+2. run postgresql database with Docker `docker run -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres`
+
+3. run `mvn spring-boot:run` to start the app
+
+4. (optional) enable hot reloading in IntelliJ by checking these two options
+- Build project automatically
+- Allow auto-make to start even if developed application is currently running
+
+
+## production enviroment
+
+1. in `application.yml`, make sure spring.datasource.url is `jdbc:postgresql://postgres:5432/postgres`
+2. run `docker-compose up --build`
 
 
 ## REST api workflow
