@@ -17,11 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-// PostgreSQL has a table called User by default, we need to give it a different name
 @Table(name = "_user")
 public class User implements UserDetails {
     @Id
-// make ID autoincremented, default value is auto
     @GeneratedValue
     private Integer id;
     private String firstName;
@@ -29,7 +27,6 @@ public class User implements UserDetails {
     private String email;
     private String password;
 
-    // take string value of the enum
     @Enumerated(EnumType.STRING)
     private Role role;
     @Override

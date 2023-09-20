@@ -25,9 +25,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
-    // request - we can extract data from it
-    // response - we can add data to it
-    // filterChain - chain of responsibility design pattern, it contains list of the other filters we need to execute
     @Override
     protected void doFilterInternal(
             @NonNull HttpServletRequest request,
