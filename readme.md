@@ -13,13 +13,15 @@ to start the database before you start the application.
 ## REST api workflow
 1. requests comes in
 2. JwtAuthFilter is applied (OncePerRequestFilter) and validates JWT
-3. if token is missing in the request, 403 is returned
-4. if token is there
-   1.  extract user email from the token
+3. if token is missing in the request, 403 status is returned
+4. if token is present
+   1. extract user email from the token
    2. call UserDetailsService, which fetches user details from dockerized database
    3. if the user does not exist, return 403
-5. With the extracted details, validate the JWT
+5. Using the extracted, validate the JWT
    1. call JWT service
    2. if token is invalid, return 403
-6. if the token is valid, update SecurityContextHolder (tell spring that the user is now authenticated for the rest of the filter chain). When the SecurityContextHolder is updated, it automatically dispatches the request and it will be sent to the DispatcherServlet and from there it will be dispatched from the controller. The 
+6. if the token is valid, update SecurityContextHolder to indicate that the user is now authenticated for the rest of the filter chain. 
+7. Once SecurityContextHolder is updated, the request is automatically dispatched. It is then sent to the DispatcherServlet and from there it's forwarded to the controller. 
+8. The controller and services execute all necessary operations, such as calling the service, interacting with the database, and sending the response (JWT, JSON, etc.).
 
